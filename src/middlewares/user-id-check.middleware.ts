@@ -8,6 +8,7 @@ export class UserIdCheckMiddlewwre implements NestMiddleware{
         if(isNaN(Number(req.params.id)) || Number(req.params.id) < 0){
             throw new BadRequestException('Invalid id')
         }
+        next();
     }
 
 }
