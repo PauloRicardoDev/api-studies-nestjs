@@ -20,6 +20,7 @@ export class UserService{
         })
     }
     async findbyId(id: number){
+        this.exists(id);
         return await this.prisma.tb_users.findUnique({
             where:{
                 id: id
@@ -58,7 +59,13 @@ export class UserService{
         })
     }
     async exists(id: number){
-        if(!(this.findbyId(id))){
+        if(!(await this.prisma.tb_users.count(
+            {
+                where: {
+                    id: id
+                }
+            }
+        ))){
             throw new NotFoundException();
         }
     }
