@@ -1,5 +1,5 @@
 import { INestApplication, Injectable, OnModuleInit } from "@nestjs/common";
-import { PrismaClient } from "generated/prisma/client"; // Caminho ajustado
+import { PrismaClient } from "generated/prisma/client"; 
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
@@ -8,7 +8,6 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
     }
 
     async enableShutdownHooks(app: INestApplication) {
-        // Corrigindo a tipagem do evento
         this.$on('beforeExit' as never, async () => {
             await app.close();
         });
