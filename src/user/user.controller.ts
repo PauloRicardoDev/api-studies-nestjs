@@ -4,7 +4,7 @@ import { UpdateUserDTO } from "./dtos/update-user.dto";
 import { UpdatePartialUserDTO } from "./dtos/updatePartial-user.dto";
 import { UserService } from "./user.service";
 
-@Controller('users')
+@Controller('v1/users')
 export class UserController{
 
     constructor(private readonly service: UserService){}
